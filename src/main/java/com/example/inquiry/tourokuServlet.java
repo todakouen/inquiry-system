@@ -37,7 +37,7 @@ public class tourokuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		resp.getWriter().append("Served at: ").append(req.getContextPath());
-        String url = "jdbc:postgresql://localhost/qqq";
+        String url = System.getenv("DB_URL");
 		String user = "a";
 		String password = "78459_ki";
 		String sql = "SELECT namae FROM hito";
@@ -68,7 +68,7 @@ public class tourokuServlet extends HttpServlet {
 		/*doGet(req, resp);*/
         String namae = req.getParameter("namae");
         HttpSession session = req.getSession(); 
-        String url = "jdbc:postgresql://localhost/qqq";
+        String url = System.getenv("DB_URL");
 		String user = "a";
 		String password = "78459_ki";
 		String sql = "INSERT INTO hito (namae) VALUES (?)";

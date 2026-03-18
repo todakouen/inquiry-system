@@ -42,7 +42,7 @@ public class csv extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "jdbc:postgresql://localhost/qqq";
+		String url = System.getenv("DB_URL");
         String user = "a";
         String password = "78459_ki";
         String aString = req.getParameter("aoaoa");

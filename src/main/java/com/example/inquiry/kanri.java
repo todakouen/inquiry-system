@@ -37,7 +37,7 @@ public class kanri extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		/*resp.getWriter().append("Served at: ").append(req.getContextPath());*/
-            String url = "jdbc:postgresql://localhost/qqq";
+            String url = System.getenv("DB_URL");
     		String user = "a";
     		String password = "78459_ki";
     		String sql = "SELECT name, male, content, file, status, id, aaa FROM qqa WHERE aaa = ? ORDER BY id ASC";   		
@@ -124,7 +124,7 @@ public class kanri extends HttpServlet {
 		 int index = Integer.parseInt(req.getParameter("index")); 
          String newStatus = req.getParameter("newStatus"); 
          String returnAnchor = req.getParameter("returnAnchor");
-        String url = "jdbc:postgresql://localhost/qqq";
+        String url = System.getenv("DB_URL");
  		String user = "a";
  		String password = "78459_ki";
  		String sql = "UPDATE qqa SET status = ? WHERE id = ?";

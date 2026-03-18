@@ -35,7 +35,7 @@ public class setteiServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		resp.getWriter().append("Served at: ").append(req.getContextPath());
 		 HttpSession session = req.getSession(); 
-		String url = "jdbc:postgresql://localhost/qqq";
+		String url = System.getenv("DB_URL");
 		String user = "a";
 		String password = "78459_ki";
 		String sql = "SELECT * FROM hito WHERE namae = ?";
@@ -70,7 +70,7 @@ public class setteiServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession(); 
-        String url = "jdbc:postgresql://localhost/qqq";
+        String url = System.getenv("DB_URL");
 		String user = "a";
 		String password = "78459_ki";
 		String sql = "";

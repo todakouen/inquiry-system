@@ -44,7 +44,7 @@ IOException {
         HttpSession session = req.getSession(); 
         /*PrintWriter out = resp.getWriter();*/
         if ("history".equals(action)) { 
-            String url = "jdbc:postgresql://localhost/qqq";
+            String url = System.getenv("DB_URL");
     		String user = "a";
     		String password = "78459_ki";
     		try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -86,7 +86,7 @@ IOException {
             String qqaKeyStr = req.getParameter("qqaKey");
             try {
                 int qqaKey = Integer.parseInt(qqaKeyStr);
-                String url = "jdbc:postgresql://localhost/qqq";
+                String url = System.getenv("DB_URL");
         		String user = "a";
         		String password = "78459_ki";
                 try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -125,7 +125,7 @@ IOException {
             generateCaptcha(req); 
             /*HttpSession session = req.getSession(); */
             String wa = (String) session.getAttribute("namae2");
-            String url = "jdbc:postgresql://localhost/qqq";
+            String url = System.getenv("DB_URL");
     		String user = "a";
     		String password = "78459_ki";
     		if (wa != null) {
@@ -198,7 +198,7 @@ IOException {
             Inquiry inquiry = (Inquiry) session.getAttribute("inquiry"); 
             Part filePar = inquiry.getFileNamePart();
             if (inquiry != null) {  
-                String url = "jdbc:postgresql://localhost/qqq";
+                String url = System.getenv("DB_URL");
         		String user = "a";
         		String password = "78459_ki";
         		String sql = "INSERT INTO qqa (name, male, content, file, filepart, aaa, namae, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -244,7 +244,7 @@ IOException {
         } else if (action != null && action.equals("updateStatus")) { 
             int index = Integer.parseInt(req.getParameter("index")); 
             String newStatus = req.getParameter("newStatus"); 
-           String url = "jdbc:postgresql://localhost/qqq";
+           String url = System.getenv("DB_URL");
     		String user = "a";
     		String password = "78459_ki";
     		String sql = "UPDATE qqa SET status = ? WHERE id = ?";
