@@ -43,8 +43,8 @@ public class password extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession(); 
 		String url = System.getenv("DB_URL");
-		String user = "a";
-		String password = "78459_ki";
+		String user = System.getenv("DB_USER");
+		String password = System.getenv("DB_PASSWORD");
 		String sql = "SELECT * FROM hito WHERE namae = ?";
 		try (Connection connection = DriverManager.getConnection(url, user, password);
 	             PreparedStatement statement = connection.prepareStatement(sql)) {

@@ -38,9 +38,17 @@ public class tourokuServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		resp.getWriter().append("Served at: ").append(req.getContextPath());
         String url = System.getenv("DB_URL");
-		String user = "a";
-		String password = "78459_ki";
+		String user = System.getenv("DB_USER");
+		String password = System.getenv("DB_PASSWORD");
 		String sql = "SELECT namae FROM hito";
+        try {
+        	Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+        	req.setAttribute("errorMessage", "ドライバーロードエラー: " + e.getMessage());
+        	RequestDispatcher rd = req.getRequestDispatcher("/jsp/error.jsp");
+        	rd.forward(req, resp);
+        	return;
+        }
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(sql);
         		ResultSet results = statement.executeQuery()) {
@@ -69,9 +77,19 @@ public class tourokuServlet extends HttpServlet {
         String namae = req.getParameter("namae");
         HttpSession session = req.getSession(); 
         String url = System.getenv("DB_URL");
-		String user = "a";
-		String password = "78459_ki";
+		String user = System.getenv("DB_USER");
+		String password = System.getenv("DB_PASSWORD");
 		String sql = "INSERT INTO hito (namae) VALUES (?)";
+		
+		try {
+        	Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+        	req.setAttribute("errorMessage", "ドライバーロードエラー: " + e.getMessage());
+        	RequestDispatcher rd = req.getRequestDispatcher("/jsp/error.jsp");
+        	rd.forward(req, resp);
+        	return;
+        }
+		
 		try (Connection connection = DriverManager.getConnection(url, user, password);
 				PreparedStatement statement = connection.prepareStatement(sql)){
 					statement.setString(1, namae);

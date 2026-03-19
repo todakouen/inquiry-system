@@ -38,8 +38,8 @@ public class kanri extends HttpServlet {
 		// TODO Auto-generated method stub
 		/*resp.getWriter().append("Served at: ").append(req.getContextPath());*/
             String url = System.getenv("DB_URL");
-    		String user = "a";
-    		String password = "78459_ki";
+    		String user = System.getenv("DB_USER");
+    		String password = System.getenv("DB_PASSWORD");
     		String sql = "SELECT name, male, content, file, status, id, aaa FROM qqa WHERE aaa = ? ORDER BY id ASC";   		
     		HttpSession session = req.getSession(); 
     		String aoa = (String) session.getAttribute("op");
@@ -125,8 +125,8 @@ public class kanri extends HttpServlet {
          String newStatus = req.getParameter("newStatus"); 
          String returnAnchor = req.getParameter("returnAnchor");
         String url = System.getenv("DB_URL");
- 		String user = "a";
- 		String password = "78459_ki";
+ 		String user = System.getenv("DB_USER");
+ 		String password = System.getenv("DB_PASSWORD");
  		String sql = "UPDATE qqa SET status = ? WHERE id = ?";
  		try (Connection connection = DriverManager.getConnection(url, user, password);
  				PreparedStatement statement = connection.prepareStatement(sql)){

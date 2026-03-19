@@ -13,15 +13,15 @@
 <div class="container"> 
     <h1>お問い合わせフォーム</h1> 
     <c:if test="${sessionScope.pal == null}">
-    <a href="../inquiry-system/touroku">登録</a>
-    <a href="../inquiry-system/nyusitu">入室</a>
+    <a href="/inquiry-system/touroku">登録</a>
+    <a href="/inquiry-system/nyusitu">入室</a>
     </c:if>
     <c:if test="${sessionScope.pal == 'join'}">
-    <a href="../inquiry-system/settei">設定</a>
-    <a href="../inquiry-system/taisitu">退室</a>
+    <a href="/inquiry-system/settei">設定</a>
+    <a href="/inquiry-system/taisitu">退室</a>
     </c:if>
     <c:if test="${sessionScope.op != 'ope0' && sessionScope.op != null}">
-    <a href="../inquiry-system/kanri">管理</a>
+    <a href="/inquiry-system/kanri">管理</a>
     </c:if>
     <form action="${inquiryUrl}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data"> 
         <p> 

@@ -43,8 +43,8 @@ public class csv extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String url = System.getenv("DB_URL");
-        String user = "a";
-        String password = "78459_ki";
+        String user = System.getenv("DB_USER");
+        String password = System.getenv("DB_PASSWORD");
         String aString = req.getParameter("aoaoa");
         resp.setContentType("text/csv");
         if (aString.equals("a")) {

@@ -45,8 +45,8 @@ IOException {
         /*PrintWriter out = resp.getWriter();*/
         if ("history".equals(action)) { 
             String url = System.getenv("DB_URL");
-    		String user = "a";
-    		String password = "78459_ki";
+    		String user = System.getenv("DB_USER");
+    		String password = System.getenv("DB_PASSWORD");
     		try (Connection connection = DriverManager.getConnection(url, user, password);
     				PreparedStatement statement = connection.prepareStatement("SELECT name, male, content, file, status, id, aaa FROM qqa WHERE namae = ? ORDER BY id ASC")){
     			List<Inquiry> inquiries = Collections.synchronizedList(new ArrayList<>()); 
@@ -87,8 +87,8 @@ IOException {
             try {
                 int qqaKey = Integer.parseInt(qqaKeyStr);
                 String url = System.getenv("DB_URL");
-        		String user = "a";
-        		String password = "78459_ki";
+        		String user = System.getenv("DB_USER");
+        		String password = System.getenv("DB_PASSWORD");
                 try (Connection connection = DriverManager.getConnection(url, user, password);
                      PreparedStatement statement = connection.prepareStatement("SELECT filepart, file FROM qqa WHERE id = ?")) {
                     statement.setInt(1, qqaKey);
@@ -126,8 +126,8 @@ IOException {
             /*HttpSession session = req.getSession(); */
             String wa = (String) session.getAttribute("namae2");
             String url = System.getenv("DB_URL");
-    		String user = "a";
-    		String password = "78459_ki";
+    		String user = System.getenv("DB_USER");
+    		String password = System.getenv("DB_PASSWORD");
     		if (wa != null) {
     		try (Connection connection = DriverManager.getConnection(url, user, password);
     				PreparedStatement statement = connection.prepareStatement("SELECT name, mail, ope FROM hito WHERE namae = ?")){
@@ -199,8 +199,8 @@ IOException {
             Part filePar = inquiry.getFileNamePart();
             if (inquiry != null) {  
                 String url = System.getenv("DB_URL");
-        		String user = "a";
-        		String password = "78459_ki";
+        		String user = System.getenv("DB_USER");
+        		String password = System.getenv("DB_PASSWORD");
         		String sql = "INSERT INTO qqa (name, male, content, file, filepart, aaa, namae, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         		try (Connection connection = DriverManager.getConnection(url, user, password);
         				PreparedStatement statement = connection.prepareStatement(sql)){
@@ -245,8 +245,8 @@ IOException {
             int index = Integer.parseInt(req.getParameter("index")); 
             String newStatus = req.getParameter("newStatus"); 
            String url = System.getenv("DB_URL");
-    		String user = "a";
-    		String password = "78459_ki";
+    		String user = System.getenv("DB_USER");
+    		String password = System.getenv("DB_PASSWORD");
     		String sql = "UPDATE qqa SET status = ? WHERE id = ?";
     		try (Connection connection = DriverManager.getConnection(url, user, password);
     				PreparedStatement statement = connection.prepareStatement(sql)){
